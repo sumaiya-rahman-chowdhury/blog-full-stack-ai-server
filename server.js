@@ -7,7 +7,14 @@ import blogRouter from "./routes/blog.routes.js";
 
 const app = express();
 await connetcDB();
-app.use(cors());
+app.use(
+  cors({
+    origin:
+      "https://client-h63ccyjnm-sumaiya-rahman-chowdhurys-projects.vercel.app", 
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.get("/", (req, res) => res.send("API is working"));
 app.use("/api/admin", adminRounter);
